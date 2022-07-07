@@ -8,40 +8,40 @@ import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import com.bignerdranch.android.myfirstappkotlin.databinding.ActivityMainBinding
+import com.bignerdranch.android.myfirstappkotlin.databinding.ActivityQuestionBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var mainBinding: ActivityMainBinding
+class QuestionActivity : AppCompatActivity() {
+    private lateinit var questionBinding: ActivityQuestionBinding
     private var launcher: ActivityResultLauncher<Intent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initMainActivityViews()
+        initQuestionActivityViews()
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result: ActivityResult ->
             if (result.resultCode == RESULT_OK) {
                 val text = result.data?.getStringExtra("answer")
                 Log.d("MyLog", text.toString())
-                mainBinding.sendAnswerText.visibility = View.VISIBLE
-                mainBinding.sendAnswerText.text = text.toString()
+                questionBinding.sendAnswerText.visibility = View.VISIBLE
+                questionBinding.sendAnswerText.text = text.toString()
             }
         }
     }
 
-    private fun initMainActivityViews() {
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)
+    private fun initQuestionActivityViews() {
+        questionBinding = ActivityQuestionBinding.inflate(layoutInflater)
+        setContentView(questionBinding.root)
 
-        mainBinding.questionButton.setOnClickListener {
-            intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("question", mainBinding.questionText.text.toString())
+        questionBinding.questionButton.setOnClickListener {
+            intent = Intent(this, AnswerActivity::class.java)
+            intent.putExtra("question", questionBinding.questionText.text.toString())
             launcher?.launch(intent)
         }
 
-        mainBinding.questionText.setOnClickListener {
-            mainBinding.questionText.setText("")
+        questionBinding.questionText.setOnClickListener {
+            questionBinding.questionText.setText("")
         }
     }
 }

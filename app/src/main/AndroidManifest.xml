@@ -14,10 +14,10 @@
         android:theme="@style/Theme.MyFirstAppKotlin"
         tools:targetApi="31">
         <activity
-            android:name=".controller.SecondActivity"
+            android:name=".controller.AnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.QuestionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
