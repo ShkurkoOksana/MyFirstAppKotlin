@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MyFirstAppKotlin"
-include ':app'
+include ':activityresultlauncherexample'
+include ':recycleviewexample'
