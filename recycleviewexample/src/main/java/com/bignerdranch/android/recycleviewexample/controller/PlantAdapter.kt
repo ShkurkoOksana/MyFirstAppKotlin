@@ -9,12 +9,12 @@ import com.bignerdranch.android.recycleviewexample.databinding.PlantItemBinding
 import com.bignerdranch.android.recycleviewexample.model.Plant
 
 class PlantAdapter : RecyclerView.Adapter<PlantAdapter.PlantHolder>() {
-    val plantList = ArrayList<Plant>()
+    private val plantList = ArrayList<Plant>()
 
     class PlantHolder(item: View) : RecyclerView.ViewHolder(item) {
-        val plantItemBinding = PlantItemBinding.bind(item)
+        private val plantItemBinding = PlantItemBinding.bind(item)
         fun bind(plant: Plant) = with(plantItemBinding) {
-            plantImage.setImageResource(plant.imageId)
+            plantImage.setImageResource(plant.imageId!!)
             plantTitle.text = plant.title
         }
     }

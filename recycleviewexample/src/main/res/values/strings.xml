@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Plant Hand Book</string>
+    <string name="app_name">Plants Hand Book</string>
     <string name="add_plant">Add plant</string>
+    <string name="choose_image_button">Next image</string>
+    <string name="done_button">Done</string>
+    <string name="enter_plant_name">Enter plant name</string>
+    <string name="enter_plane_description">Enter plane description</string>
 </resources>
