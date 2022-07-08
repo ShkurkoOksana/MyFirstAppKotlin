@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ToolBarExample</string>
+    <string name="sync">Sync</string>
+    <string name="save">Save</string>
+    <string name="search">Search</string>
+    <string name="delete">Delete</string>
+</resources>
