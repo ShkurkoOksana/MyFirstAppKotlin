@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="@string/category1">
+        <menu>
+            <item android:title="@string/icon1" android:id="@+id/icon1" android:icon="@drawable/ic_icon1" />
+            <item android:title="@string/icon2" android:id="@+id/icon2" android:icon="@drawable/ic_icon2" />
+            <item android:title="@string/icon3" android:id="@+id/icon3" android:icon="@drawable/ic_icon3" />
+        </menu>
+    </item>
+    <item android:title="@string/category2">
+        <menu>
+            <item android:title="@string/icon4" android:id="@+id/icon4" android:icon="@drawable/ic_icon1" />
+            <item android:title="@string/icon5" android:id="@+id/icon5" android:icon="@drawable/ic_icon2" />
+            <item android:title="@string/icon6" android:id="@+id/icon6" android:icon="@drawable/ic_icon3" />
+        </menu>
+    </item>
+</menu>
