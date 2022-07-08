@@ -18,3 +18,4 @@ rootProject.name = "MyFirstAppKotlin"
 include ':activityresultlauncherexample'
 include ':recycleviewexample'
 include ':toolbarexample'
+include ':bottomnavigationviewexample'
