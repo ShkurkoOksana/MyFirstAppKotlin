@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.bottomNavigationView.selectedItemId = R.id.profile
 
-        mainBinding.bottomNavigationView.setOnNavigationItemSelectedListener {
+        mainBinding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
                 R.id.search -> Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
