@@ -11,7 +11,13 @@
         <entry key="bottomnavigationviewexample/src/main/res/drawable/botttom_nav_selector.xml" value="0.1" />
         <entry key="bottomnavigationviewexample/src/main/res/layout/activity_main.xml" value="0.36850817645037615" />
         <entry key="bottomnavigationviewexample/src/main/res/menu/bottom_menu.xml" value="0.4114583333333333" />
+        <entry key="cristalball/src/main/res/layout/activity_main.xml" value="0.39697113037109377" />
         <entry key="drawerlayoutexample/src/main/res/layout/activity_main.xml" value="0.2203125" />
+        <entry key="fragmentexample/src/main/res/layout/activity_main.xml" value="0.3097007468894675" />
+        <entry key="fragmentexample/src/main/res/layout/fragment_1.xml" value="0.4125" />
+        <entry key="fragmentexample/src/main/res/layout/fragment_2.xml" value="0.4125" />
+        <entry key="fragmentexample/src/main/res/layout/fragment_blank.xml" value="0.1425925925925926" />
+        <entry key="fragmentexample/src/main/res/layout/fragment_blank2.xml" value="0.4125" />
         <entry key="navigationviewexample/src/main/res/layout/activity_main.xml" value="0.2503333762839989" />
         <entry key="navigationviewexample/src/main/res/layout/hidder.xml" value="0.21927083333333333" />
         <entry key="navigationviewexample/src/main/res/menu/navigation_menu.xml" value="0.21927083333333333" />

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jenda">
+        <item>Wait money</item>
+        <item>Waist money</item>
+        <item>Love</item>
+        <item>New friends</item>
+        <item>Beautiful weather</item>
+        <item>Failure</item>
+    </string-array>
+</resources>
