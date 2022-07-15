@@ -10,4 +10,6 @@
     <color name="dark_blue">#29C2F1</color>
     <color name="dark_grey">#5E5E5E</color>
     <color name="blue_dark">#021A4B</color>
+    <color name="edit_text_dark">#020202</color>
+    <color name="light_grey">#8A8989</color>
 </resources>

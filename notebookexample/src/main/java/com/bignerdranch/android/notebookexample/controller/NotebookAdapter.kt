@@ -20,13 +20,16 @@ class NotebookAdapter(listMain: ArrayList<Item>, contextMain: Context) :
     class NotebookViewHolder(itemView: View, contextViewHolder: Context) :
         RecyclerView.ViewHolder(itemView) {
         val tvTitle = itemView.findViewById<TextView>(R.id.tvItemTitle)
+        val tvTime = itemView.findViewById<TextView>(R.id.tvTime)
         val context = contextViewHolder
 
         fun setData(item: Item) {
             tvTitle.text = item.title
+            tvTime.text = item.time
 
             itemView.setOnClickListener{
                 val intent = Intent(context, EditActivity::class.java).apply {
+                    putExtra(IntentConstants.INTENT_ID_KEY, item.id)
                     putExtra(IntentConstants.INTENT_TITLE_KEY, item.title)
                     putExtra(IntentConstants.INTENT_DESCRIPTION_KEY, item.desc)
                     putExtra(IntentConstants.INTENT_IMAGE_URI_KEY, item.imageUri)

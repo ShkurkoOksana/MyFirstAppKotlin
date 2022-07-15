@@ -15,11 +15,12 @@ class MyDBManager(context: Context) {
         db = myDBHelper.writableDatabase
     }
 
-    fun insertToDB(title: String, desc: String, uri: String) {
+    fun insertToDB(title: String, desc: String, uri: String, time: String) {
         val values = ContentValues().apply {
             put(MyDBNameClass.COLUMN_NAME_TITLE, title)
             put(MyDBNameClass.COLUMN_NAME_CONTENT, desc)
             put(MyDBNameClass.COLUMN_NAME_IMAGE_URI, uri)
+            put(MyDBNameClass.COLUMN_NAME_TIME, time)
         }
 
         db?.insert(MyDBNameClass.TABLE_NAME, null, values)
@@ -29,6 +30,19 @@ class MyDBManager(context: Context) {
         var selection = BaseColumns._ID + "=$id"
 
         db?.delete(MyDBNameClass.TABLE_NAME, null, null)
+    }
+
+    fun updateItemFromDB(id: Int, title: String, desc: String, uri: String, time: String) {
+        var selection = BaseColumns._ID + "=$id"
+
+        val values = ContentValues().apply {
+            put(MyDBNameClass.COLUMN_NAME_TITLE, title)
+            put(MyDBNameClass.COLUMN_NAME_CONTENT, desc)
+            put(MyDBNameClass.COLUMN_NAME_IMAGE_URI, uri)
+            put(MyDBNameClass.COLUMN_NAME_TIME, time)
+        }
+
+        db?.update(MyDBNameClass.TABLE_NAME, values, selection, null)
     }
 
     @SuppressLint("Range")
@@ -42,11 +56,13 @@ class MyDBManager(context: Context) {
             val dataTitle = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_TITLE))
             val dataDesc = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_CONTENT))
             val dataImageUri = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_IMAGE_URI))
+            val dataTime = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_TIME))
             val item = Item()
             item.id = dataId
             item.title = dataTitle
             item.desc = dataDesc
             item.imageUri = dataImageUri
+            item.time = dataTime
 
             dataList.add(item)
         }
