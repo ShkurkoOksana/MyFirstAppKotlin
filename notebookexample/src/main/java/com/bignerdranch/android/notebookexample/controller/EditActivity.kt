@@ -27,6 +27,7 @@ class EditActivity : AppCompatActivity() {
             if (it.resultCode == RESULT_OK) {
                 binding.imMainImage.setImageURI(it.data?.data)
                 tempImageUri = it.data?.data.toString()
+                contentResolver.takePersistableUriPermission(it.data?.data!!, Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
         }
 
@@ -46,7 +47,6 @@ class EditActivity : AppCompatActivity() {
 
                     if (i.getStringExtra(IntentConstants.INTENT_IMAGE_URI_KEY) != "empty") {
                         mainImageLayout.visibility = View.VISIBLE
-                        Log.d("MyLog", i.getStringExtra(IntentConstants.INTENT_IMAGE_URI_KEY).toString())
                         imMainImage.setImageURI(Uri.parse(i.getStringExtra(IntentConstants.INTENT_IMAGE_URI_KEY)))
                         imButtonDeleteImage.visibility = View.GONE
                         imButtomEditImage.visibility = View.GONE
@@ -90,7 +90,6 @@ class EditActivity : AppCompatActivity() {
             imButtomEditImage.setOnClickListener {
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
                 intent.type = "image/*"
-                intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                 imageLauncher?.launch(intent)
             }
 
@@ -100,6 +99,7 @@ class EditActivity : AppCompatActivity() {
 
                 if (title != "" && desc != "") {
                     myDBManager.insertToDB(title, desc, tempImageUri)
+                    finish()
                 }
             }
         }

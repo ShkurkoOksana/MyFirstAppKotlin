@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import com.bignerdranch.android.notebookexample.model.Item
 
 class MyDBManager(context: Context) {
@@ -24,16 +25,24 @@ class MyDBManager(context: Context) {
         db?.insert(MyDBNameClass.TABLE_NAME, null, values)
     }
 
+    fun removeItemFromDB(id: String) {
+        var selection = BaseColumns._ID + "=$id"
+
+        db?.delete(MyDBNameClass.TABLE_NAME, null, null)
+    }
+
     @SuppressLint("Range")
     fun readDBData(): ArrayList<Item> {
         val dataList = ArrayList<Item>()
         val cursor = db?.query(MyDBNameClass.TABLE_NAME, null, null, null, null, null, null)
 
         while (cursor?.moveToNext()!!) {
+            val dataid = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
             val dataTitle = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_TITLE))
             val dataDesc = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_CONTENT))
             val dataImageUri = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_IMAGE_URI))
             val item = Item()
+            item.id = dataid
             item.title = dataTitle
             item.desc = dataDesc
             item.imageUri = dataImageUri

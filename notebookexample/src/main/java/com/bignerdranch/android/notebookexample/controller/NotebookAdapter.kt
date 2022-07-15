@@ -1,5 +1,6 @@
 package com.bignerdranch.android.notebookexample.controller
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.notebookexample.constants.IntentConstants
+import com.bignerdranch.android.notebookexample.database.MyDBManager
 import com.bignerdranch.android.notebookexample.model.Item
 
 class NotebookAdapter(listMain: ArrayList<Item>, contextMain: Context) :
@@ -48,9 +50,17 @@ class NotebookAdapter(listMain: ArrayList<Item>, contextMain: Context) :
         return listArray.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateAdapter(listItems: ArrayList<Item>) {
         listArray.clear()
         listArray.addAll(listItems)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int, dbManager: MyDBManager) {
+        dbManager.removeItemFromDB(listArray[position].id.toString())
+        listArray.removeAt(position)
+        notifyItemRangeChanged(0, listArray.size)
+        notifyItemRemoved(position)
     }
 }
