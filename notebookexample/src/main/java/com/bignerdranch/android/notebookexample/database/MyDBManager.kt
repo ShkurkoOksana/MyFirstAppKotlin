@@ -32,7 +32,7 @@ class MyDBManager(context: Context) {
     fun removeItemFromDB(id: String) {
         var selection = BaseColumns._ID + "=$id"
 
-        db?.delete(MyDBNameClass.TABLE_NAME, null, null)
+        db?.delete(MyDBNameClass.TABLE_NAME, selection, null)
     }
 
     suspend fun updateItemFromDB(id: Int, title: String, desc: String, uri: String, time: String) = withContext(Dispatchers.IO){

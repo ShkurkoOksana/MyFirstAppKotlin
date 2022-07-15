@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun getSwapMg(): ItemTouchHelper {
         return ItemTouchHelper(object: ItemTouchHelper.
         SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
