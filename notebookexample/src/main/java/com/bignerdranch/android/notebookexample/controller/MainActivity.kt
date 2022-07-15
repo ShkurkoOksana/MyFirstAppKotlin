@@ -3,7 +3,9 @@ package com.bignerdranch.android.notebookexample.controller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         init()
+        initSearchView()
 
         binding.fbNew.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
@@ -29,15 +32,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun init() {
+    private fun init() {
         binding.rcView.layoutManager = LinearLayoutManager(this)
         val swapHelper = getSwapMg()
         swapHelper.attachToRecyclerView(binding.rcView)
         binding.rcView.adapter = myAdapter
     }
 
-    fun fillAdapter() {
-        val list = myDBManager.readDBData()
+    private fun initSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener, android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                val list = myDBManager.readDBData(p0!!)
+                myAdapter.updateAdapter(list)
+                return true
+            }
+
+        })
+    }
+
+    private fun fillAdapter() {
+        val list = myDBManager.readDBData("")
         myAdapter.updateAdapter(list)
 
         if (list.size > 0) {

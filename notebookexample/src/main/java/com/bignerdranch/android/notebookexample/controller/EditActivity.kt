@@ -34,7 +34,7 @@ class EditActivity : AppCompatActivity() {
         getMyIntent()
     }
 
-    fun getMyIntent() {
+    private fun getMyIntent() {
         val i = intent
 
         if (i != null) {
@@ -58,13 +58,7 @@ class EditActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         myDBManager.openDB()
-        val dataList = myDBManager.readDBData()
-        for (item in dataList) {
-            binding.apply {
-            }
-        }
     }
 
     override fun onDestroy() {

@@ -32,17 +32,18 @@ class MyDBManager(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun readDBData(): ArrayList<Item> {
+    fun readDBData(searchText: String): ArrayList<Item> {
         val dataList = ArrayList<Item>()
-        val cursor = db?.query(MyDBNameClass.TABLE_NAME, null, null, null, null, null, null)
+        val selection = "${MyDBNameClass.COLUMN_NAME_TITLE} like ?"
+        val cursor = db?.query(MyDBNameClass.TABLE_NAME, null, selection, arrayOf("%$searchText%"), null, null, null)
 
         while (cursor?.moveToNext()!!) {
-            val dataid = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
+            val dataId = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
             val dataTitle = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_TITLE))
             val dataDesc = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_CONTENT))
             val dataImageUri = cursor.getString(cursor.getColumnIndex(MyDBNameClass.COLUMN_NAME_IMAGE_URI))
             val item = Item()
-            item.id = dataid
+            item.id = dataId
             item.title = dataTitle
             item.desc = dataDesc
             item.imageUri = dataImageUri
