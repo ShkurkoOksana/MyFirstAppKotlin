@@ -8,6 +8,13 @@
     android:padding="10dp"
     tools:context=".EditActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
     <EditText
         android:id="@+id/edTitile"
         android:layout_width="0dp"
@@ -17,13 +24,14 @@
         android:layout_marginEnd="8dp"
         android:background="@android:drawable/editbox_background"
         android:ems="10"
-        android:hint="Title"
+        android:hint="@string/title"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/mainImageLayout" />
 
     <EditText
         android:id="@+id/edDesc"
@@ -34,13 +42,15 @@
         android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:gravity="top"
-        android:hint="Description"
-        android:inputType="textPersonName"
+        android:hint="@string/description"
+        android:inputType="textMultiLine|textPersonName"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/edTitile"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edTitile"
-        app:layout_constraintTop_toBottomOf="@+id/edTitile" />
+        app:layout_constraintTop_toBottomOf="@+id/edTitile"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbSave"
@@ -48,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
+        android:alpha="0.5"
         android:backgroundTint="@color/dark_blue"
         android:clickable="true"
         android:contentDescription="@string/fa_button_save"
@@ -55,5 +66,63 @@
         app:layout_constraintBottom_toBottomOf="@+id/edDesc"
         app:layout_constraintEnd_toEndOf="@+id/edDesc"
         app:srcCompat="@drawable/ic_save" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.5"
+        android:clickable="true"
+        app:backgroundTint="@color/dark_blue"
+        app:layout_constraintBottom_toTopOf="@+id/fbSave"
+        app:layout_constraintEnd_toEndOf="@+id/edDesc"
+        app:srcCompat="@drawable/ic_image" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainImageLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="@+id/edTitile"
+        app:layout_constraintStart_toStartOf="@+id/edTitile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imMainImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/imButtomEditImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/imMainImage"
+            app:layout_constraintTop_toTopOf="@+id/imMainImage"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+        <ImageButton
+            android:id="@+id/imButtonDeleteImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imMainImage"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

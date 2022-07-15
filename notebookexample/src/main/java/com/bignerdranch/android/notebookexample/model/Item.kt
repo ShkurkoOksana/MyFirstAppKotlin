@@ -1,9 +1,7 @@
 package com.bignerdranch.android.notebookexample.model
 
-class Item(title: String = "", content: String = "") {
-    var title = title
-        get() { return field }
-
-    var content = content
-        get() { return field }
+class Item {
+    var title: String = "empty"
+    var desc: String = "empty"
+    var imageUri: String = "empty"
 }

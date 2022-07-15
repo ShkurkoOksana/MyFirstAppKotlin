@@ -32,11 +32,14 @@
         <entry key="notebookexample/src/main/res/drawable-xhdpi/ic_add.xml" value="0.1" />
         <entry key="notebookexample/src/main/res/drawable-xxhdpi/ic_add.xml" value="0.1" />
         <entry key="notebookexample/src/main/res/drawable/ic_add.xml" value="0.1" />
+        <entry key="notebookexample/src/main/res/drawable/ic_image.xml" value="0.1" />
         <entry key="notebookexample/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="notebookexample/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="notebookexample/src/main/res/drawable/ic_save.xml" value="0.1" />
-        <entry key="notebookexample/src/main/res/layout/activity_edit.xml" value="0.4125" />
+        <entry key="notebookexample/src/main/res/layout/activity_edit.xml" value="0.2545159034883445" />
         <entry key="notebookexample/src/main/res/layout/activity_main.xml" value="0.26490936279296873" />
+        <entry key="notebookexample/src/main/res/layout/notebook_item.xml" value="0.21927083333333333" />
+        <entry key="notebookexample/src/main/res/layout/rc_item.xml" value="0.4125" />
         <entry key="notebookexample/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="notebookexample/src/src/main/res/layout/activity_main.xml" value="0.355126953125" />
         <entry key="recycleviewexample/src/main/res/layout/activity_main.xml" value="0.2203125" />

@@ -3,18 +3,14 @@ package com.bignerdranch.android.notebookexample.controller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.notebookexample.controller.databinding.ActivityMainBinding
 import com.bignerdranch.android.notebookexample.database.MyDBManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     val myDBManager = MyDBManager(this)
-    private var launcher: ActivityResultLauncher<Intent>? = null
+    val myAdapter = NotebookAdapter(ArrayList(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,46 +18,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        init()
+
         binding.fbNew.setOnClickListener {
-            intent = Intent(this, EditActivity::class.java)
-            launcher?.launch(intent)
+            val intent = Intent(this, EditActivity::class.java)
+            startActivity(intent)
         }
+    }
 
-        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult ->
-            if (result.resultCode == RESULT_OK) {
-            }
-        }
+    fun init() {
+        binding.rcView.layoutManager = LinearLayoutManager(this)
+        binding.rcView.adapter = myAdapter
+    }
 
-/*        binding.button.setOnClickListener {
-            binding.textView.text = ""
-            myDBManager.insertToDB(binding.textTitle.text.toString(), binding.textContent.text.toString())
-
-            val dataList = myDBManager.readDBData()
-            for (item in dataList) {
-                binding.apply {
-                    textView.append(item.title)
-                    textView.append(" ")
-                    textView.append(item.content)
-                    textView.append("\n")
-                }
-            }
-        }*/
+    fun fillAdapter() {
+        myAdapter.updateAdapter(myDBManager.readDBData())
     }
 
     override fun onResume() {
         super.onResume()
-
         myDBManager.openDB()
-        val dataList = myDBManager.readDBData()
-        for (item in dataList) {
-            binding.apply {
-/*                textView.append(item.title)
-                textView.append(" ")
-                textView.append(item.content)
-                textView.append("\n")*/
-            }
-        }
+        fillAdapter()
     }
 
     override fun onDestroy() {

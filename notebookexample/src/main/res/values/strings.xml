@@ -3,4 +3,6 @@
     <string name="empty">Empty</string>
     <string name="fa_button_add">fa_button_add</string>
     <string name="fa_button_save">fa_button_save</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>
