@@ -3,7 +3,6 @@ package com.bignerdranch.android.notebookexample.controller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -11,8 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.notebookexample.controller.databinding.ActivityMainBinding
 import com.bignerdranch.android.notebookexample.database.MyDBManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    private var job: Job? = null
     private lateinit var binding: ActivityMainBinding
     val myDBManager = MyDBManager(this)
     val myAdapter = NotebookAdapter(ArrayList(), this)
@@ -46,20 +50,23 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                val list = myDBManager.readDBData(p0!!)
-                myAdapter.updateAdapter(list)
+                fillAdapter(p0!!)
                 return true
             }
 
         })
     }
 
-    private fun fillAdapter() {
-        val list = myDBManager.readDBData("")
-        myAdapter.updateAdapter(list)
+    private fun fillAdapter(text: String) {
+        job?.cancel()
+        job = CoroutineScope(Dispatchers.Main).launch {
 
-        if (list.size > 0) {
-            binding.tvNoElements.visibility = View.GONE
+            val list = myDBManager.readDBData(text)
+            myAdapter.updateAdapter(list)
+
+            if (list.size > 0) {
+                binding.tvNoElements.visibility = View.GONE
+            }
         }
     }
 
@@ -80,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         myDBManager.openDB()
-        fillAdapter()
+        fillAdapter("")
     }
 
     override fun onDestroy() {

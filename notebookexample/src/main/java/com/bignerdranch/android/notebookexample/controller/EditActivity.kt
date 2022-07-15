@@ -10,6 +10,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bignerdranch.android.notebookexample.constants.IntentConstants
 import com.bignerdranch.android.notebookexample.controller.databinding.ActivityEditBinding
 import com.bignerdranch.android.notebookexample.database.MyDBManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -133,13 +136,15 @@ class EditActivity : AppCompatActivity() {
                 var desc = binding.edDesc.text.toString()
 
                 if (title != "" && desc != "") {
-                    if (isEditState) {
-                        myDBManager.updateItemFromDB(id, title, desc, tempImageUri, getCurrentTime())
+                    CoroutineScope(Dispatchers.Main).launch {
+                        if (isEditState) {
+                            myDBManager.updateItemFromDB(id, title, desc, tempImageUri, getCurrentTime())
 
-                    } else {
-                        myDBManager.insertToDB(title, desc, tempImageUri, getCurrentTime())
+                        } else {
+                            myDBManager.insertToDB(title, desc, tempImageUri, getCurrentTime())
+                        }
+                        finish()
                     }
-                    finish()
                 }
             }
         }
