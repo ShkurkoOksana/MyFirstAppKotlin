@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "803606324437-bjpcnkjsn4pqm6jt5sl9tg2ublabrddk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bignerdranch.android.firebasechat",
+            "certificate_hash": "8408fc5830f972673d71a50b421eaae8678a7bc3"
+          }
+        },
+        {
           "client_id": "803606324437-jl8n1r9fkhqb9hcdhbos14rbrm1lh5da.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -3,4 +3,5 @@
     <string name="send_button">Send</string>
     <string name="message">Message</string>
     <string name="start_chat">Start chat:</string>
+    <string name="google_signin">Google SignIn</string>
 </resources>
