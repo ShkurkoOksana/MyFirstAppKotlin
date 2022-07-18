@@ -25,6 +25,8 @@ class SignInActivity : AppCompatActivity() {
 
         initView()
 
+        checkAuthState()
+
         initLauncher()
     }
 
@@ -73,9 +75,17 @@ class SignInActivity : AppCompatActivity() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.d("MyLog", "Google signIn done")
+                checkAuthState()
             } else {
                 Log.d("MyLog", "Google signIn error")
             }
+        }
+    }
+
+    private fun checkAuthState() {
+        if (auth.currentUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
