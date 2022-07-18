@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "803606324437",
+    "firebase_url": "https://mychat-d4f14-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mychat-d4f14",
+    "storage_bucket": "mychat-d4f14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803606324437:android:19e8b281ad39f47e89ee5c",
+        "android_client_info": {
+          "package_name": "com.bignerdranch.android.firebasechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803606324437-jl8n1r9fkhqb9hcdhbos14rbrm1lh5da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6FdKDtL7ojzpA5ESHx2OyT1Tu7zm3pRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803606324437-jl8n1r9fkhqb9hcdhbos14rbrm1lh5da.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

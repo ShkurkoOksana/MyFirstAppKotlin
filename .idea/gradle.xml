@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/activityresultlauncherexample" />
             <option value="$PROJECT_DIR$/bottomnavigationviewexample" />
             <option value="$PROJECT_DIR$/cristalball" />
+            <option value="$PROJECT_DIR$/firebasechat" />
             <option value="$PROJECT_DIR$/fragmentexample" />
             <option value="$PROJECT_DIR$/navigationviewexample" />
             <option value="$PROJECT_DIR$/notebookexample" />
@@ -23,6 +24,5 @@
         </option>
       </GradleProjectSettings>
     </option>
-    <option name="offlineMode" value="true" />
   </component>
 </project>
